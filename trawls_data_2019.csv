@@ -1,0 +1,265 @@
+Sample,Lowest ID,Broad group,Stage,Count,Fraction split,Representative count,Density in water column (ind./dm3)
+BIOS19-D2-Trawl1,Temora sp.,Copepod,Adult,1680,32,53760,28102
+BIOS19-D2-Trawl1,Sagittoidea,Chaetognath,Adult,58,32,1856,970
+BIOS19-D2-Trawl1,Libinia sp.,Decapod,Zoea,54,32,1728,903
+BIOS19-D2-Trawl1,Penilia avirostris,Cladoceran,Adult,33,32,1056,552
+BIOS19-D2-Trawl1,Pandalidae,Decapod,Zoea,32,32,1024,535
+BIOS19-D2-Trawl1,Alpheidae,Decapod,Early zoea,28,32,896,468
+BIOS19-D2-Trawl1,Scombridae,Actinopteri,Egg,21,32,672,351
+BIOS19-D2-Trawl1,Majidae,Decapod,Zoea,17,32,544,284
+BIOS19-D2-Trawl1,Oikopleura sp.,Larvacean,Adult,14,32,448,234
+BIOS19-D2-Trawl1,Hippolytidae,Decapod,Zoea,7,32,224,117
+BIOS19-D2-Trawl1,Euchaeta sp.,Copepod,Adult,6,32,192,100
+BIOS19-D2-Trawl1,Anomura (c.f. Munida sp.),Decapod,Zoea,3,32,96,50
+BIOS19-D2-Trawl1,Actinopteri,Actinopteri,Hatchling,2,32,64,33
+BIOS19-D2-Trawl1,Alpheidae,Decapod,Late zoea,21,2,42,22
+BIOS19-D2-Trawl1,Evadne sp.,Cladoceran,Adult,1,32,32,17
+BIOS19-D2-Trawl1,Panopeidae,Decapod,Zoea,1,32,32,17
+BIOS19-D2-Trawl1,Gastropoda,Gastropod,Veliger,1,32,32,17
+BIOS19-D2-Trawl1,Squilloidea,Stomatopod,Alima,6,2,12,6
+BIOS19-D2-Trawl1,Metridia lucens,Copepod,Adult,4,2,8,4
+BIOS19-D2-Trawl1,Scombridae,Actinopteri,Larva,3,2,6,3
+BIOS19-D2-Trawl1,Scombridae,Actinopteri,Egg,3,2,6,3
+BIOS19-D2-Trawl1,Libinia sp.,Decapod,Zoea,2,2,4,2
+BIOS19-D2-Trawl1,Carangidae,Actinopteri,Larva,1,2,2,1
+BIOS19-D2-Trawl1,Stomatopoda,Stomatopod,Antizoea,1,2,2,1
+BIOS19-D2-Trawl1,Engraulidae,Actinopteri,Larva,1,2,2,1
+BIOS19-D2-Trawl1,Palaemonidae,Decapod,Zoea,1,2,2,1
+BIOS19-D2-Trawl1,Clupeidae,Actinopteri,Egg,1,2,2,1
+BIOS19-D2-Trawl1,Libinia sp.,Decapod,Megalopa,1,2,2,1
+BIOS19-D2-Trawl1,Metridia longa,Copepod,Adult,1,2,2,1
+BIOS19-D1-Trawl1,Euchaeta sp.,Copepod,Adult,676,32,21632,8320.0
+BIOS19-D1-Trawl1,Temora sp.,Copepod,Adult,30,32,960,369.2
+BIOS19-D1-Trawl1,Sagittoidea (short stubby),Chaetognath,Adult,30,32,960,369.2
+BIOS19-D1-Trawl1,Bilateria (mystery oval egg),Actinopteri,Egg,19,32,608,233.8
+BIOS19-D1-Trawl1,Corycaeus sp.,Copepod,Adult,14,32,448,172.3
+BIOS19-D1-Trawl1,Calanoida,Copepod,Adult,11,32,352,135.4
+BIOS19-D1-Trawl1,Majoidea,Decapod,Zoea,9,32,288,110.8
+BIOS19-D1-Trawl1,Crangon sp.,Decapod,Zoea,8,32,256,98.5
+BIOS19-D1-Trawl1,Oikopleura sp.,Larvacean,Adult,5,32,160,61.5
+BIOS19-D1-Trawl1,Galatheidae (Anomura),Decapod,Zoea,4,32,128,49.2
+BIOS19-D1-Trawl1,Oithona sp.,Copepod,Adult,3,32,96,36.9
+BIOS19-D1-Trawl1,Candacia cf. ethiopica,Copepod,Adult,2,32,64,24.6
+BIOS19-D1-Trawl1,Pandalidae,Decapod,Zoea,1,32,32,12.3
+BIOS19-D1-Trawl1,Oncaea sp.,Copepod,Adult,1,32,32,12.3
+BIOS19-D1-Trawl1,Podon sp.,Cladoceran,Adult,1,32,32,12.3
+BIOS19-D1-Trawl1,Thunnus sp.,Actinopteri,Egg,1,32,32,12.3
+BIOS19-D1-Trawl1,Alpheidae,Decapod,Zoea/Decapodid,12,1,12,4.6
+BIOS19-D1-Trawl1,Candacia cf. ethiopica,Copepod,Adult,5,1,5,1.9
+BIOS19-D1-Trawl1,Libinia sp.,Decapod,Megalopa,5,1,5,1.9
+BIOS19-D1-Trawl1,Thunnus sp.,Actinopteri,Larva (stage 2),3,1,3,1.2
+BIOS19-D1-Trawl1,Pandalidae,Decapod,Zoea,3,1,3,1.2
+BIOS19-D1-Trawl1,Hyperiidae,Amphipod,Adult,2,1,2,0.8
+BIOS19-D1-Trawl1,Thunnus sp.,Actinopteri,Larva (stage 1),2,1,2,0.8
+BIOS19-D1-Trawl1,Pseudosagitta sp.,Chaetognath,Adult,2,1,2,0.8
+BIOS19-D1-Trawl1,Squilloidea,Stomatopod,Alima,1,1,1,0.4
+BIOS19-D1-Trawl1,Gammaridea (Hyachelia or Polycheria),Amphipod,Adult,1,1,1,0.4
+BIOS19-D1-Trawl1,Oithona sp.,Copepod,Adult,1,1,1,0.4
+BIOS19-D1-Trawl1,Thunnus sp.,Actinopteri,Egg,1,1,1,0.4
+BIOS19-D1-Trawl1,Rhincalanus cornutus (female),Copepod,Adult,1,1,1,0.4
+BIOS19-D1-Trawl1,Euchaeta sp. (large),Copepod,Adult,1,1,1,0.4
+BIOS19-D4-Trawl1,Temora sp.,Copepod,Adult,670,32,21440,
+BIOS19-D4-Trawl1,Penilia avirostris,Cladoceran,Adult,86,32,2752,
+BIOS19-D4-Trawl1,"Actinopteri (Pomatomus, Scombridae, Sciaenidae)",Actinopteri,Egg,59,32,1888,
+BIOS19-D4-Trawl1,Majidae,Decapod,Zoea,14,32,448,
+BIOS19-D4-Trawl1,"Actinopteri (Pomatomus, Scombridae, Gobiidae, Sciaenidae)",Actinopteri,Larva,11,32,352,
+BIOS19-D4-Trawl1,Alpheidae,Decapod,Early zoea,10,32,320,
+BIOS19-D4-Trawl1,Euchaeta sp.,Copepod,Adult,10,32,320,
+BIOS19-D4-Trawl1,Pandalidae,Decapod,Zoea,10,32,320,
+BIOS19-D4-Trawl1,Clupeidae,Actinopteri,Egg,9,32,288,
+BIOS19-D4-Trawl1,Sagitta sp.,Chaetognath,Adult,6,32,192,
+BIOS19-D4-Trawl1,Oikopleura sp.,Larvacean,Adult,4,32,128,
+BIOS19-D4-Trawl1,Thiidae,Decapod,Zoea,3,32,96,
+BIOS19-D4-Trawl1,Obelia sp.,Hydromedusa,Adult,2,32,64,
+BIOS19-D4-Trawl1,Evadne sp.,Cladoceran,Adult,2,32,64,
+BIOS19-D4-Trawl1,Hippolytidae,Decapod,Zoea,2,32,64,
+BIOS19-D4-Trawl1,Liocarcinus sp.,Decapod,Zoea,2,32,64,
+BIOS19-D4-Trawl1,Xanthidae,Decapod,Zoea,1,32,32,
+BIOS19-D4-Trawl1,Engraulid elongate egg,Actinopteri,Egg,1,32,32,
+BIOS19-D4-Trawl1,Carangidae,Actinopteri,Larva,1,32,32,
+BIOS19-D4-Trawl1,Diogenes sp.,Decapod,Zoea,1,32,32,
+BIOS19-D4-Trawl1,Pandalidae,Decapod,Zoea,9,2,18,
+BIOS19-D4-Trawl1,"Actinopteri (Clupeidae, Scombridae, Gobiidae, Sciaenidae)",Actinopteri,Larva,7,2,14,
+BIOS19-D4-Trawl1,Xanthidae,Decapod,Zoea,4,2,8,
+BIOS19-D4-Trawl1,Alpheidae,Decapod,Late zoea,3,2,6,
+BIOS19-D4-Trawl1,Squilloidea,Stomatopod,Alima,2,2,4,
+BIOS19-D4-Trawl1,Carangidae,Actinopteri,Larva,2,2,4,
+BIOS19-D4-Trawl1,Engraulid elongate egg,Actinopteri,Egg,1,2,2,
+BIOS19-D4-Trawl1,Anthomedusae,Hydromedusa,Adult,1,2,2,
+BIOS19-D3-Trawl1,Euchaeta sp.,Copepod,Adult,1268,32,40576,22719
+BIOS19-D3-Trawl1,Temora sp.,Copepod,Adult,226,32,7232,4049
+BIOS19-D3-Trawl1,Diogenes sp.,Decapod,Zoea,160,32,5120,2867
+BIOS19-D3-Trawl1,Maja sp.,Decapod,Zoea,55,32,1760,985
+BIOS19-D3-Trawl1,Sagitta sp.,Chaetognath,Adult,31,32,992,555
+BIOS19-D3-Trawl1,Libinia sp.,Decapod,Zoea,20,32,640,358
+BIOS19-D3-Trawl1,Thunnus sp.,Actinopteri,Egg,19,32,608,340
+BIOS19-D3-Trawl1,Alpheidae,Decapod,Late zoea,16,32,512,287
+BIOS19-D3-Trawl1,Oikopleura sp.,Larvacean,Adult,16,32,512,287
+BIOS19-D3-Trawl1,Evadne sp.,Cladoceran,Adult,15,32,480,269
+BIOS19-D3-Trawl1,Oithona sp.,Copepod,Adult,11,32,352,197
+BIOS19-D3-Trawl1,Alpheidae,Decapod,Early zoea,11,32,352,197
+BIOS19-D3-Trawl1,Engraulid elongate egg,Actinopteri,Egg,9,32,288,161
+BIOS19-D3-Trawl1,Thunnus sp.,Actinopteri,Hatchling,8,32,256,143
+BIOS19-D3-Trawl1,Corycaeus sp.,Copepod,Adult,7,32,224,125
+BIOS19-D3-Trawl1,Thunnus sp.,Actinopteri,Larva,6,32,192,108
+BIOS19-D3-Trawl1,Oncaea sp.,Copepod,Adult,5,32,160,90
+BIOS19-D3-Trawl1,Calanus sp.,Copepod,Adult,5,32,160,90
+BIOS19-D3-Trawl1,Thunnus sp.,Actinopteri,Larva,42,2,84,47
+BIOS19-D3-Trawl1,Libinia sp.,Decapod,Megalopa,2,32,64,36
+BIOS19-D3-Trawl1,Gastropoda,Gastropod,Veliger,2,32,64,36
+BIOS19-D3-Trawl1,Copilia sp.,Copepod,Adult,1,32,32,18
+BIOS19-D3-Trawl1,Nanomia sp.,Siphonophore,Polygastric,1,32,32,18
+BIOS19-D3-Trawl1,Isopoda,Isopod,Juvenile/Adult,1,32,32,18
+BIOS19-D3-Trawl1,Centropages sp.,Copepod,Adult,1,32,32,18
+BIOS19-D3-Trawl1,Thiidae,Decapod,Zoea,1,32,32,18
+BIOS19-D3-Trawl1,Enneagonum hyalinum,Siphonophore,Polygastric,1,32,32,18
+BIOS19-D3-Trawl1,Candacia cf. ethiopica,Copepod,Adult,1,32,32,18
+BIOS19-D3-Trawl1,Eurynome sp.,Decapod,Zoea,1,32,32,18
+BIOS19-D3-Trawl1,Bassia bassensis,Siphonophore,Polygastric,1,32,32,18
+BIOS19-D3-Trawl1,Thunnus sp.,Actinopteri,Egg,2,2,4,2
+BIOS19-D3-Trawl1,Bilateria (mystery ciliated grooved larva),Animal,Larva,1,2,2,1
+BIOS19-D3-Trawl1,Scombriformes,Actinopteri,Larva,1,2,2,1
+BIOS19-D3-Trawl1,Candacia cf. ethiopica,Copepod,Adult,1,2,2,1
+BIOS19-D3-Trawl1,Lysmata sp.,Decapod,Zoea,1,2,2,1
+BIOS19-D3-Trawl1,Libinia sp.,Decapod,Megalopa,1,2,2,1
+D1139-BWT1,Copepoda (<2mm),Copepod,Adult + Copepodite,945,32,30240,
+D1139-BWT1,Copepoda (Calanus pacificus) (>2mm),Copepod,Adult,198,32,6336,
+D1139-BWT1,Corycaeus sp.,Copepod,Adult,170,32,5440,
+D1139-BWT1,Euphausiidae,Krill,Calytopsis,151,32,4832,
+D1139-BWT1,Oikopleura dioica,Larvacean,Adult,130,32,4160,
+D1139-BWT1,Euphausiidae,Krill,Metanauplius,75,32,2400,
+D1139-BWT1,Eucalanus californicus,Copepod,Nauplius,73,32,2336,
+D1139-BWT1,Eucalanus californicus,Copepod,Adult,29,32,928,
+D1139-BWT1,Euphausiidae,Krill,Furcilia,27,32,864,
+D1139-BWT1,Evadne sp.,Cladoceran,Adult,25,32,800,
+D1139-BWT1,Muggiaea atlantica,Siphonophore,Polygastric,15,32,480,
+D1139-BWT1,Sagitta sp.,Chaetognath,Adult + Juvenile,14,32,448,
+D1139-BWT1,Narcomedusae,Hydromedusa,Juvenile,13,32,416,
+D1139-BWT1,Engraulidae,Actinopteri,Egg,9,32,288,
+D1139-BWT1,Pleurobrachia bachei,Ctenophore,Adult,168,1,168,
+D1139-BWT1,Pleurobrachia bachei,Ctenophore,Adult,5,32,160,
+D1139-BWT1,Beroe gracilis,Ctenophore,Adult,3,32,96,
+D1139-BWT1,Gastropoda,Gastropod,Veliger,1,32,32,
+D1139-BWT1,Sergestidae,Decapod,Elaphocaris,1,32,32,
+D1139-BWT1,Nanomia sp. (pneumatophore),Siphonophore,Polygastric,1,32,32,
+D1139-BWT1,Bivalvia,Bivalve,Veliger,1,32,32,
+D1139-BWT1,Centropages bradyi,Copepod,Adult,1,32,32,
+D1139-BWT1,Calanoida,Copepod,Adult,9,1,9,
+D1139-BWT1,Beroe gracilis,Ctenophore,Adult,7,1,7,
+D1139-BWT1,Eucalanus californicus,Copepod,Adult,4,1,4,
+D1139-BWT1,Mitrocomella sp.,Hydromedusa,Adult,3,1,3,
+D1139-BWT1,Nanomia sp. (pneumatophore),Siphonophore,Polygastric,2,1,2,
+D1139-BWT1,Bolinopsis sp. (comb row),Ctenophore,Adult,2,1,2,
+D1139-BWT1,Oikopleura dioica,Larvacean,Adult,2,1,2,
+D1139-BWT1,Polychaeta (piece),Polychaete,Adult,2,1,2,
+D1139-BWT1,Cirripedia,Barnacle,Cypris,1,1,1,
+D1139-BWT1,Geryonidae,Decapod,Zoea,1,1,1,
+D1139-BWT1,Carcinidae,Decapod,Zoea,1,1,1,
+D1139-BWT1,Clytia gregaria,Hydromedusa,Adult,1,1,1,
+D1139-BWT1,Carangidae,Actinopteri,Egg,1,1,1,
+D1139-BWT1,Narcomedusae,Hydromedusa,Juvenile,1,1,1,
+D1139-BWT1,Caligidae,Copepod,"Adult, gravid",1,1,1,
+D1139-BWT1,Engraulidae,Actinopteri,Larva,1,1,1,
+29Mar19-BW3,Copepoda (<2mm),Copepod,Adult + Copepodite,1603,16,25648,
+29Mar19-BW3,Copepoda (Calanus pacificus) (>2mm),Copepod,Adult,226,16,3616,
+29Mar19-BW3,Corycaeus sp.,Copepod,Adult,192,16,3072,
+29Mar19-BW3,Oikopleura dioica,Larvacean,Adult,94,16,1504,
+29Mar19-BW3,Euphausiidae,Krill,Calytopsis,44,16,704,
+29Mar19-BW3,Euphausiidae,Krill,Metanauplius,38,16,608,
+29Mar19-BW3,Sagitta sp.,Chaetognath,Adult + Juvenile,25,16,400,
+29Mar19-BW3,Muggiaea atlantica,Siphonophore,Polygastric,13,16,208,
+29Mar19-BW3,Eucalanus californicus,Copepod,Nauplius,12,16,192,
+29Mar19-BW3,Bilateria,Animal,Egg,9,16,144,
+29Mar19-BW3,Evadne sp.,Cladoceran,Adult,8,16,128,
+29Mar19-BW3,Euphausiidae,Krill,Furcilia,6,16,96,
+29Mar19-BW3,Gastropoda,Gastropod,Veliger,4,16,64,
+29Mar19-BW3,Muggiaea atlantica,Siphonophore,Eudoxid,4,16,64,
+29Mar19-BW3,Bivalvia,Bivalve,Veliger,3,16,48,
+29Mar19-BW3,Anthoathecata,Hydromedusa,Adult,2,16,32,
+29Mar19-BW3,Salpida,Salp,Blastozooid,1,16,16,
+29Mar19-BW3,Cirripedia,Barnacle,Cypris,1,16,16,
+29Mar19-BW3,Eucalanus californicus,Copepod,Adult,1,16,16,
+29Mar19-BW3,Sphaeronectes koellikeri,Siphonophore,Polygastric,9,1,9,
+29Mar19-BW3,Pleurobrachia sp.,Ctenophore,Adult,4,1,4,
+29Mar19-BW3,Beroe sp.,Ctenophore,Adult,3,1,3,
+29Mar19-BW3,Muggiaea atlantica,Siphonophore,Polygastric,2,1,2,
+29Mar19-BW3,Thunnus sp.,Actinopteri,Larva,1,1,1,
+29Mar19-BW3,Geryonidae,Decapod,Zoea II,1,1,1,
+29Mar19-BW3,Oikopleura dioica,Larvacean,Adult,1,1,1,
+29Mar19-BW3,Salpida,Salp,Blastozooid,1,1,1,
+D1137-T1,"Copepoda (Calanus pacificus, Pleuromamma sp., Eucalanus californicus, Candacia sp., Euchaeta sp., Gaetanus sp., Gaussia sp.)",Copepod,Adult,3790,16,60640,
+D1137-T1,Euphausiidae (Euphausia pacifica + Nematoscelis difficilis),Krill,Furcilia,623,16,9968,
+D1137-T1,Sagittoidea,Chaetognath,Adult,443,16,7088,
+D1137-T1,Halocyprida,Ostracod,Adult,331,16,5296,
+D1137-T1,Euphausiidae (Euphausia pacifica + Nematoscelis difficilis),Krill,Calytopsis,98,16,1568,
+D1137-T1,Bilateria,Animal,Egg,72,16,1152,
+D1137-T1,Microsetella sp.,Copepod,Adult,19,16,304,
+D1137-T1,Diphyidae,Siphonophore,Eudoxid,15,16,240,
+D1137-T1,Chuniphyes multidentata (anterior),Siphonophore,Polygastric,12,16,192,
+D1137-T1,Thalia democratica,Salp,Blastozooid,6,16,96,
+D1137-T1,Lensia sp.,Siphonophore,Polygastric,6,16,96,
+D1137-T1,Hyperiidae,Amphipod,Juvenile,6,16,96,
+D1137-T1,Eusergestes similis,Decapod,Elaphocaris,6,16,96,
+D1137-T1,Sagitta sp. (lyra et. al.) > 2cm,Chaetognath,Adult,74,1,74,
+D1137-T1,Polychaeta,Polychaete,Nectotroch,4,16,64,
+D1137-T1,Oikopleura sp.,Larvacean,Adult,3,16,48,
+D1137-T1,Hydrozoa,Hydromedusa,Adult,3,16,48,
+D1137-T1,Vibilia armata,Amphipod,Adult,2,16,32,
+D1137-T1,Tomopteris sp.,Polychaete,Adult,2,16,32,
+D1137-T1,Narcomedusae,Hydromedusa,Adult,2,16,32,
+D1137-T1,Mysida,Mysid,Juvenile,2,16,32,
+D1137-T1,Muggiaea atlantica,Siphonophore,Polygastric,2,16,32,
+D1137-T1,Hydrozoa,Hydromedusa,Adult,2,16,32,
+D1137-T1,Eusergestes similis,Decapod,Mysis,2,16,32,
+D1137-T1,Euphausia pacifica,Krill,Adult,2,16,32,
+D1137-T1,Doliolida,Doliolid,Oozoid,2,16,32,
+D1137-T1,Ctenophora,Ctenophore,Adult,2,16,32,
+D1137-T1,Chuniphyes sp. (posterior),Siphonophore,Polygastric,2,16,32,
+D1137-T1,Balanomorpha,Barnacle,Nauplius,2,16,32,
+D1137-T1,Alciopida,Polychaete,Adult,2,16,32,
+D1137-T1,Aglaura sp.,Hydromedusa,Adult,2,16,32,
+D1137-T1,Euphausia pacifica,Krill,Adult,22,1,22,
+D1137-T1,Scina sp.,Amphipod,Adult,1,16,16,
+D1137-T1,Prayidae,Siphonophore,Nectophore,1,16,16,
+D1137-T1,Prayidae,Siphonophore,Eudoxid,1,16,16,
+D1137-T1,Polychaeta,Polychaete,Adult,1,16,16,
+D1137-T1,Poeobius meseres,Polychaete,Adult,1,16,16,
+D1137-T1,Pneumatodermatidae,Gastropod,Adult,1,16,16,
+D1137-T1,Phronima sp.,Amphipod,Adult,1,16,16,
+D1137-T1,Nanomia sp. (pneumatophore),Siphonophore,Polygastric,1,16,16,
+D1137-T1,Lensia multicristata,Siphonophore,Polygastric,1,16,16,
+D1137-T1,Lensia conoidea,Siphonophore,Polygastric,1,16,16,
+D1137-T1,Hippopodius hippopus,Siphonophore,Larval nectophore,1,16,16,
+D1137-T1,Haliscera sp.,Hydromedusa,Adult,1,16,16,
+D1137-T1,Cyclothone signata,Actinopteri,Adult,1,16,16,
+D1137-T1,Conchoecilla sp.,Ostracod,Adult,1,16,16,
+D1137-T1,Colobonema sericeum,Hydromedusa,Adult,1,16,16,
+D1137-T1,Chuniphyes moserae,Siphonophore,Polygastric,1,16,16,
+D1137-T1,Chelophyes appendiculata,Siphonophore,Polygastric,1,16,16,
+D1137-T1,Brachipoda,Brachiopod,Lecitotrophic larva,1,16,16,
+D1137-T1,Calanoida,Copepod,Adult,14,1,14,
+D1137-T1,Colobonema sericeum,Hydromedusa,Adult,10,1,10,
+D1137-T1,Lensia conoidea,Siphonophore,Polygastric,5,1,5,
+D1137-T1,Cyclothone signata,Actinopteri,Adult,4,1,4,
+D1137-T1,Chelophyes appendiculata,Siphonophore,Polygastric,4,1,4,
+D1137-T1,Salpa fusiformis,Salp,Oozoid,3,1,3,
+D1137-T1,Poeobius meseres,Polychaete,Adult,3,1,3,
+D1137-T1,Myctophum sp.,Actinopteri,Adult,3,1,3,
+D1137-T1,Hydrozoa,Hydromedusa,Adult,3,1,3,
+D1137-T1,Haliscera sp.,Hydromedusa,Adult,3,1,3,
+D1137-T1,Chuniphyes multidentata (anterior),Siphonophore,Polygastric,3,1,3,
+D1137-T1,Beroe sp.,Ctenophore,Adult,3,1,3,
+D1137-T1,Scina sp.,Amphipod,Adult,2,1,2,
+D1137-T1,Paraphronima sp.,Amphipod,Adult,2,1,2,
+D1137-T1,Euphausia pacifica,Krill,Furcilia,2,1,2,
+D1137-T1,Eucalanus californicus,Copepod,Adult,2,1,2,
+D1137-T1,Chuniphyes sp. (posterior),Siphonophore,Polygastric,2,1,2,
+D1137-T1,Atolla sp.,Scyphomedusa,Adult,2,1,2,
+D1137-T1,Tomopteris sp.,Polychaete,Adult,1,1,1,
+D1137-T1,Streetsia challengeri,Amphipod,Adult,1,1,1,
+D1137-T1,Sergestoidea,Decapod,Adult,1,1,1,
+D1137-T1,Pyrosoma atlanticum,Pyrosome,Adult,1,1,1,
+D1137-T1,Hyperiidea,Amphipod,Adult,1,1,1,
+D1137-T1,Gaussia princeps,Copepod,Adult,1,1,1,
+D1137-T1,Gaetanus sp.,Copepod,Adult,1,1,1,
+D1137-T1,Cyclothone sp.,Actinopteri,Larval,1,1,1,

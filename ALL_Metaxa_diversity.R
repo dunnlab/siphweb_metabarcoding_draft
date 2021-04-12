@@ -15,7 +15,7 @@ library(ggplotify)
 library(scatterpie)
 
 barcodes=c("134", "152","166", "179", "261", "272")
-setwd("/Volumes/GoogleDrive/My Drive/Metabarcoding_things/IDtables_ALL")
+setwd("/Volumes/GoogleDrive/My Drive/Metabarcoding_things/siphweb_metabarcoding/IDtables_ALL")
 
 runids = c("RUN0","RUN1","RUN2","RUN3", "RUN4","RUN5")
 metacomblist=list()
@@ -218,17 +218,17 @@ ggplot(customtab, aes(x = sample, y = log(abundance), fill = OTU)) + geom_bar(po
 ### Analyze Metaxa & Trawl Data
 #Read metabarcoding data
 setwd("/Volumes/GoogleDrive/My Drive/Metabarcoding_things/")
-allsamples <- read.csv("/Volumes/GoogleDrive/My Drive/Metabarcoding_things/AllSamplesParsed.tsv", sep="\t", header = T, stringsAsFactors = F)
+allsamples <- read.csv("/Volumes/GoogleDrive/My Drive/Metabarcoding_things/siphweb_metabarcoding/AllSamplesParsed.tsv", sep="\t", header = T, stringsAsFactors = F)
 allsamples <- allsamples[,-66]
 #Parse sequences/feature_names
-allseqs <- read.csv("/Volumes/GoogleDrive/My Drive/Metabarcoding_things/seqs-feats.csv", sep="\t", header = F, stringsAsFactors = F)
+allseqs <- read.csv("/Volumes/GoogleDrive/My Drive/Metabarcoding_things/siphweb_metabarcoding/seqs-feats.csv", sep="\t", header = F, stringsAsFactors = F)
 names(allseqs) <- c("Feature_name","Sequence")
 allseqs <- allseqs[which(allseqs$Feature_name %in% unique(allsamples$Feature_name)),]
 seqs_samples <- full_join(allsamples,allseqs, by="Feature_name")
 #write.table(seqs_samples, "SequencesParsed.tsv", sep="\t", col.names = T, row.names = F)
 
 #Read trawl data
-trawls = read.csv("/Volumes/GoogleDrive/My\ Drive/trawls_data_Nov2020.tsv", header=T, sep="\t", stringsAsFactors = F)
+trawls = read.csv("/Volumes/GoogleDrive/My\ Drive/Metabarcoding_things/siphweb_metabarcoding/trawls_data_Nov2020.tsv", header=T, sep="\t", stringsAsFactors = F)
 trawls$Broad.group[which(trawls$Broad.group == "Krill")] <- "Euphausid"
 trawls$Broad.group[which(trawls$Broad.group == "Gymnosome pteropod")] <- "Gastropod"
 trawls$Broad.group[which(trawls$Broad.group == "Appendicularia")] <- "Larvacean"
@@ -246,7 +246,7 @@ names(broad.taxa) <- c("Sample", "Broad.group", "Representative.count")
 broad.taxa$Representative.count[is.na(broad.taxa$Representative.count)]<-1
 
 #Encode extraction-to-trawl match
-ext <- read.csv("/Volumes/GoogleDrive/My Drive/Metabarcoding_things/extractions_GC_Nov2020.tsv", header=T, stringsAsFactors = F, sep="\t" )
+ext <- read.csv("/Volumes/GoogleDrive/My Drive/Metabarcoding_things/siphweb_metabarcoding/extractions_GC_Nov2020.tsv", header=T, stringsAsFactors = F, sep="\t" )
 trawl_to_specimen <- ext[,c(1,3,13)]
 RUN0trawls = data.frame(Extraction..=allsamples$Extraction, Specimen.. = allsamples$Specimen, Corrresponding.prey.field.sample = rep(NA, nrow(allsamples)))[which(allsamples$run == "RUN0"),]
 names(RUN0trawls) <- names(trawl_to_specimen)
@@ -445,7 +445,7 @@ wrap_plots(GC,TR,SEL, widths = c(1,1,1.7,1.7))
 #dev.off()
 
 #### COMBINED PLOT WITH LITERATURE+VARS+DAPC_predictions
-lit <- read.csv("Literature-data/allinteractions.tsv", sep="\t", stringsAsFactors = F)
+lit <- read.csv("siphweb_metabarcoding/Literature-data/allinteractions.tsv", sep="\t", stringsAsFactors = F)
 
 ROV_lit <- lit[which(lit$source %in% c("Pugh2009cResomiidae", "Choy_2017", "Hissman2005_newrho")),]
 ROV_lit$Predator[which(ROV_lit$Predator=="Apolemia")] <- "Apolemia sp" 
