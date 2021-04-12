@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --job-name=Q2_pipe  
 #SBATCH --partition=general
-#SBATCH --ntasks=4
+#SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
 #SBATCH --mem-per-cpu=5G
 #SBATCH --mail-type=END
@@ -15,6 +15,7 @@
 # mkdir pipeline_directory
 # Have a copy of the manifest and metadata files in the pipeline_directory
 # Manifests paths should be $PWD/$bb_output/filename for each filename
+# Metadata_barcode.tsv for QIIME must have unpaired sample IDs
 # OTUwrangle.R script should be in the pipeline_directory
 
 #############
@@ -26,9 +27,10 @@ module load BBMap/36.62-foss-2016b-Java-1.8.0_121
 echo "Modules and environment loaded!"
 
 #Declare temporary variables
-runid="RUN1"
-pipeline_dir="fullpipelineRUN1"
-pathtoTARGZs="/SAY/standard2/cwd7-CC0522-FASEEB/data/sequences/illumina/SIPHWEB_MiSeq_Lane_1"
+runid="RUN5"
+pipeline_dir="fullpipelineRUN5"
+#pathtoTARGZs="/SAY/standard2/cwd7-CC0522-FASEEB/data/sequences/illumina/SIPHWEB_MiSeq_Lane_4" must cp *.gz from /SAY/ folder
+pathtoTARGZs=$pipeline_dir"/targzs"
 pathtoFASTQs=$pipeline_dir"/fastq_files"
 pathtoHTMLS=$pipeline_dir"/fastqc_HTMLs"
 barcodes=("152" "166" "272" "179" "261" "134")
@@ -38,9 +40,8 @@ bb_output=$pipeline_dir"/bb_output"
 bb_orphans=$pipeline_dir"/bb_orphans"
 cutadapt_o=$pipeline_dir"/cutadapt_o"
 manifest="$pipeline_dir"/manifest
-metadata="$pipeline_dir"/metadata.tsv
 
-
+mkdir $pipeline_dir
 mkdir $pathtoFASTQs
 mkdir $pathtoHTMLS
 mkdir $grep_output
@@ -79,11 +80,23 @@ done
 
 echo "PCR primer sequences removed from the 5' end!"
 
+#Make general manifest
+names=($(ls $cutadapt_o | grep -oE "[0-9]\w+_L001"))
+let i=1
+for name in ${names[@]}; do 
+ if (( $i % 2 )); then
+  echo $name,"\$PWD/\$bb_output/"$name"_R1_001.fastq,forward" >> $manifest
+ else
+  echo $name,"\$PWD/\$bb_output/"$name"_R2_001.fastq,reverse" >> $manifest
+ fi
+  let i=i+1
+done
+
 #Repair non-matching read pairs due to differential sequencing errors in R1 and R2
 for barcode in ${barcodes[@]}; do
   samplenames=($(grep -oE "\w+_L001" $manifest))
   for file in ${samplenames[@]}; do
-    repair.sh in="$cutadapt_o"/"$barcode"_"$file"_R1_001.fastq in2="$cutadapt_o"/"$barcode"_"$file"_R2_001.fastq out1="$bb_output"/"$barcode"_"$file"_R1_001.fastq out2="$bb_output"/"$barcode"_"$file"_R2_001.fastq outsingle="$bb_orphans"/"$barcode"_"$file"_orphans.fastq
+    repair.sh in="$cutadapt_o"/"$file"_R1_001.fastq in2="$cutadapt_o"/"$file"_R2_001.fastq out1="$bb_output"/"$file"_R1_001.fastq out2="$bb_output"/"$file"_R2_001.fastq outsingle="$bb_orphans"/"$barcode"_"$file"_orphans.fastq
   done
 done
 
@@ -97,14 +110,36 @@ module load dSQ
 
 for barcode in ${barcodes[@]}; do
 
+
   echo Starting QIIME2 for barcode_"$barcode"
 
   manifest="$pipeline_dir"/manifest_"$barcode"
   metadata="$pipeline_dir"/metadata_"$barcode".tsv
   exportpath="$pipeline_dir"/Q2_"$barcode"/export
 
-  #rm -rf "$pipeline_dir"/Q2_"$barcode"/"$runid""$barcode"_dada2_out
-  #rm -rf "$pipeline_dir"/Q2_"$barcode"/"$runid""$barcode"-metrics-results
+  #Make manifest files
+  names=($(ls $bb_output | grep -oE ^$barcode"\w+_L001"))
+  echo "sample-id,absolute-filepath,direction" > $manifest
+  let i=1
+  for name in ${names[@]}; do 
+     if (( $i % 2 )); then
+          echo $name",/home/ad2258/scratch60/"$bb_output"/"$name"_R1_001.fastq,forward" >> $manifest
+     else
+          echo $name",/home/ad2258/scratch60/"$bb_output"/"$name"_R2_001.fastq,reverse" >> $manifest
+     fi
+    let i=i+1
+  done
+
+  #Make metadata files
+  uniqnames=($(ls $bb_output | grep -oE ^$barcode"\w+_L001" | uniq))
+  echo -e "SampleID\\tBarcodeSequence\\tLinkerPrimerSequence\\tlane\\ttemplate" > $metadata
+  for uname in ${uniqnames[@]}; do 
+    echo -e $uname"\\tGCACCACCAA\\tCAGCACGGAG\\t1\\t"$barcode >> $metadata
+  done
+
+  #Remove pre-existing dada outputs
+  rm -rf "$pipeline_dir"/Q2_"$barcode"/"$runid""$barcode"_dada2_out
+  rm -rf "$pipeline_dir"/Q2_"$barcode"/"$runid""$barcode"-metrics-results
 
   mkdir "$pipeline_dir"/Q2_"$barcode"
   mkdir $exportpath
@@ -236,33 +271,52 @@ for barcode in ${barcodes[@]}; do
   grep -f "$pipeline_dir"/Q2_"$barcode"/top100"$barcode"_neat.txt -A 1 "$exportpath"/"$barcode"-sequences-str.fasta | sed 's\^--$\\g' | sed '/^$/d' >> "$pipeline_dir"/Q2_"$barcode"/top100"$barcode".fasta
 
   #Split sequences in sets of 10 for SAP
-  mkdir "$pipeline_dir"/Q2_"$barcode"/splitout"$runid""$barcode"
-  split -l 10 "$pipeline_dir"/Q2_"$barcode"/top100"$barcode".fasta "$pipeline_dir"/Q2_"$barcode"/splitout"$runid""$barcode"/splitout
-  splitfiles=($(ls "$pipeline_dir"/Q2_"$barcode"/splitout"$runid""$barcode"))
-  mkdir "$pipeline_dir"/Q2_"$barcode"/splitSAP"$runid""$barcode"
-
-  #Make DeadSimple jobfile for each fasta subfile onto SAP
-  rm "$pipeline_dir"/Q2_"$barcode"/SAP"$runid""$barcode"_jobfile.txt
-  rm "$pipeline_dir"/Q2_"$barcode"/METAXA2"$runid""$barcode"_jobfile.txt
-  rm "$pipeline_dir"/Q2_"$barcode"/METAXA2_default_"$runid""$barcode"_jobfile.txt
-  for i in ${splitfiles[@]}; do
-    echo "module load BLAST+/2.8.1-foss-2016b-Python-2.7.13; module load ClustalW2/2.1-foss-2016b; sap --database zooplanktonSAP_db.fasta --project $pipeline_dir/Q2_$barcode/splitSAP$runid$barcode/$i --email alejandro.damianserrano@yale.edu $pipeline_dir/Q2_$barcode/splitout$runid$barcode/$i" | cat >> "$pipeline_dir"/Q2_"$barcode"/SAP"$runid""$barcode"_jobfile.txt
+  #mkdir "$pipeline_dir"/Q2_"$barcode"/splitout"$runid""$barcode"
+  #split -l 10 "$pipeline_dir"/Q2_"$barcode"/top100"$barcode".fasta "$pipeline_dir"/Q2_"$barcode"/splitout"$runid""$barcode"/splitout
+  #splitfiles=($(ls "$pipeline_dir"/Q2_"$barcode"/splitout"$runid""$barcode"))
+  #mkdir "$pipeline_dir"/Q2_"$barcode"/splitSAP"$runid""$barcode"
+  #rm "$pipeline_dir"/Q2_"$barcode"/SAP"$runid""$barcode"_jobfile.txt
+  #for i in ${splitfiles[@]}; do
+  #  echo "module load BLAST+/2.8.1-foss-2016b-Python-2.7.13; module load ClustalW2/2.1-foss-2016b; ~/miniconda2/bin/sap --database /home/ad2258/project/scratchfullpipelineRUN1_resources/zooplanktonSAP_db.fasta --project $pipeline_dir/Q2_$barcode/splitSAP$runid$barcode/$i --email alejandro.damianserrano@yale.edu $pipeline_dir/Q2_$barcode/splitout$runid$barcode/$i" | cat >> "$pipeline_dir"/Q2_"$barcode"/SAP"$runid""$barcode"_jobfile.txt
     # --minsignificance 0.9 -s 0.1 --minidentity 0.1 -n 10 --ppcutoff 60 --svg # optional arguments for SAP
-  done
+  #done
+  #dSQ --jobfile "$pipeline_dir"/Q2_"$barcode"/SAP"$runid""$barcode"_jobfile.txt --ntasks 4 --cpus-per-task=4 --mem-per-cpu=4g -t 7-10:00:00 > "$pipeline_dir"/Q2_"$barcode"/runSAP_"$runid""$barcode".sh
   
+done
+
+echo QIIME2 finished
+
+## METAXA2 ##
+
+module purge
+module load BLAST/2.2.22-Linux_x86_64
+module load USEARCH/6.1.544
+module load HMMER/3.1b2-foss-2016a
+
+for barcode in ${barcodes[@]}; do
+  echo METAXA2 started for barcode "$barcode"!
   #Run Metaxa2 on the whole feature fasta file for each barcode since it is fast
-  echo "module load BLAST/2.2.22-Linux_x86_64; module load USEARCH/6.1.544; module load HMMER/3.1b2-foss-2016a; metaxa2 -i $exportpath/$barcode-sequences-str.fasta -o $pipeline_dir/Q2_$barcode/METAXA2_$runid$barcode" -g SSU_SILVA123.1 -T 0,60,60,60,60,65,70,75,85,90,97 -R 70 | cat >> "$pipeline_dir"/Q2_"$barcode"/METAXA2"$runid""$barcode"_jobfile.txt
-  echo "module load BLAST/2.2.22-Linux_x86_64; module load USEARCH/6.1.544; module load HMMER/3.1b2-foss-2016a; metaxa2 -i $exportpath/$barcode-sequences-str.fasta -o $pipeline_dir/Q2_$barcode/METAXA2_default_$runid$barcode" -T 0,60,60,60,60,65,70,75,85,90,97 -R 70 | cat >> "$pipeline_dir"/Q2_"$barcode"/METAXA2_default_"$runid""$barcode"_jobfile.txt
-
-  dSQ --jobfile "$pipeline_dir"/Q2_"$barcode"/SAP"$runid""$barcode"_jobfile.txt --ntasks 4 --cpus-per-task=4 --mem-per-cpu=4g -t 7-10:00:00 > "$pipeline_dir"/Q2_"$barcode"/runSAP_"$runid""$barcode".sh
-  dSQ --jobfile "$pipeline_dir"/Q2_"$barcode"/METAXA2"$runid""$barcode"_jobfile.txt --ntasks 4 --cpus-per-task=4 --mem-per-cpu=4g -t 7-10:00:00 > "$pipeline_dir"/Q2_"$barcode"/METAXA2_"$runid""$barcode".sh
-  dSQ --jobfile "$pipeline_dir"/Q2_"$barcode"/METAXA2_default_"$runid""$barcode"_jobfile.txt --ntasks 4 --cpus-per-task=4 --mem-per-cpu=4g -t 7-10:00:00 > "$pipeline_dir"/Q2_"$barcode"/METAXA2_default_"$runid""$barcode".sh
-  sbatch dsq-SAP"$runid$barcode"_jobfile-20$(date +%y-%m-%d).sh
-  sbatch dsq-METAXA2"$runid$barcode"_jobfile-20$(date +%y-%m-%d).sh
-  sbatch dsq-METAXA2_default_"$runid$barcode"_jobfile-20$(date +%y-%m-%d).sh
-  
-  echo SAP and METAXA2 started for barcode "$barcode"!
-
+  metaxa2 -i $exportpath/$barcode-sequences-str.fasta -o $pipeline_dir/Q2_$barcode/METAXA2_$runid$barcode -g SSU_SILVA123.1 -T 0,60,60,60,60,65,70,75,85,90,97 --reltax T -R 70
+  metaxa2 -i $exportpath/$barcode-sequences-str.fasta -o $pipeline_dir/Q2_$barcode/METAXA2_custom_$runid$barcode -g SILVAPLUS -T 0,60,60,60,60,65,70,75,85,90,97 --reltax T -R 70 
+  echo METAXA2 finished for barcode "$barcode"!
 done
 
 #Continue to OTUwrange batch script and linked OTU_wrange.R file (in pipeline_dir) for subsequen steps
+
+module purge
+module load R-bundle-Bioconductor/3.5-foss-2016b-R-3.4.1
+
+for barcode in ${barcodes[@]}; do
+
+  sed 's/;/\t/g' "$pipeline_dir"/Q2_"$barcode"/"METAXA2_$runid$barcode".taxonomy.txt > "$pipeline_dir"/Q2_"$barcode"/"METAXA2_$runid$barcode".taxonomy-table.tsv
+  sed 's/;/\t/g' "$pipeline_dir"/Q2_"$barcode"/"METAXA2_custom_$runid$barcode".taxonomy.txt > "$pipeline_dir"/Q2_"$barcode"/"METAXA2_custom_$runid$barcode".taxonomy-table.tsv
+
+  pathtoAssignments="$pipeline_dir"/Q2_"$barcode"/"METAXA2_$runid$barcode".taxonomy-table.tsv
+  pathtoAssignments_def="$pipeline_dir"/Q2_"$barcode"/"METAXA2_custom_$runid$barcode".taxonomy-table.tsv
+  pathtoFeatures="$pipeline_dir"/Q2_"$barcode"/"$runid""$barcode"-biomout-sorted.tsv
+
+  #Create table with OTU IDs and frequency in each sample
+  Rscript --vanilla "$pipeline_dir"/OTUwrange_metaxa.R $runid $barcode $pathtoAssignments $pathtoFeatures "$pipeline_dir/"
+  Rscript --vanilla "$pipeline_dir"/OTUwrange_metaxa_default.R $runid $barcode $pathtoAssignments_def $pathtoFeatures "$pipeline_dir/"
+
+done

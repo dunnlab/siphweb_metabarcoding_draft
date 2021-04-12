@@ -1,0 +1,68 @@
+Molecular Lab Protocol -- Alejandro Damian Serrano
+--------------------------------------------------
+Brief: Siphonophore gut content DNA metabarcoding of 18S V9 variable region. DNA extraction and cleaning. PCR amplification, identify primers (oligos) and enzymes. Gel electrophoresis, look for the right sized band. Purify amplicons. Insert amplicons into plasmids. Cultivate plasmids into E. coli, grow and pick individual colonies for DNA extraction and amplification.
+
+Goal: Identify what metazoan taxonomic units the DNA found in siphonophore gastrozooids belongs to.
+
+Links:
+http://www.earthmicrobiome.org/emp-standard-protocols/18s/
+http://www.agrf.org.au/docs/sanger-sequencing-sample-preparation-guide.pdf
+
+Extraction: DNeasy Blood and Tissue kit. 
+
+PCR in 25ul, with each universal primer (Forward: Illumina_Euk_1391f, Reverse: Illumina_EukBr), GoTaq polymerase. 
+Identify blocking primers of siphonophore 18S_V9, use C3  or DualPrimingOligo (do not use elongation arrest).
+
+3' overlapping Universal primer - (Siphonophore specific sequence) - C3 5'
+
+PCR Grade H2O	9.0 µL
+5 Primer Hot MM 10.0 µL
+Forward primer (10µM) 	0.5 µL
+Reverse primer (10µM) 	0.5 µL
+Blocking Primer (10µM) 	4.0 µL
+Template DNA 	1.0 µL
+Total reaction volume 	25.0 µL
+
+Step Temperature Time
+
+    94°C 3 minutes
+    94°C 45 seconds
+    65°C 15 seconds
+    57°C 30 seconds
+    72°C 90 seconds
+    Repeat steps 2-5 35 times
+    72°C 10 minutes
+    4°C HOLD
+
+Amplify samples in triplicate, meaning each sample will be amplified in 3 replicate 25 µL PCR reactions.
+Combine the triplicate PCR reactions for each sample into a single volume. Combination will result in a total of 75 µL of amplicon for each sample. Do NOT combine amplicons from different samples at this point.
+Run amplicons (with triplicates pooled) on an agarose gel. Expected band size for 1391f/Eukbr is roughly 200 bp.
+Quantify amplicons with Picogreen (see manufacturers protocol; Invitrogen Item #P11496).
+Combine an equal amount of amplicon from each sample into a single, sterile tube. Generally 240 ng of DNA per sample are pooled. However, larger amounts can be used if the final pool will be gel isolated or when working with low biomass samples. Note: When working with multiple plates of samples, it is typical to produce a single tube of amplicons for each plate of samples.
+Clean Amplicon pool using MoBio UltraClean PCR Clean-Up Kit #12500 according to the manufacturer’s instructions. If working with more than 96 samples, the pool may need to be split evenly for cleaning and then recombined. Optional: if spurious bands were present on gel (in step 3), part of the final pool can be run on a gel and then gel extracted to select only the target bands. It is a good idea to only gel extract part of the pool to prevent against losing the entire pool in the event something goes wrong.
+Measure concentration and 260/280 of final pool that has been cleaned. For best results the 260/280 should be between 1.8-2.0.
+
+Gel electrophoresis of primary PCR products. If single band found, proceed with the current DNA stock. If multiple bands are found, cut out correct length band from the gel and re-amplify that DNA.
+
+Purification of the PCR product.
+Use DNA ligase to join the sticky ends of amplicons (extra A to the extra T) to transposable plasmids (TOPO TA Cloning kit).
+Topo Vector (1ul) + water + salt solution (1ul) + PCR product (0.5-4ul) [5min]
+
+Transformation of E. coli, cultivation in LB medium 37C. Recovery period, selection of transformed (resistant) bacteria using ampicillin, overnight incubation. 
+Control for vector-only and non-transformed bacteria.
+Plating of E. coli in agar media. Identification of separate colonies, isolation of colonies in cryovials for DNA extraction.
+
+Plasmid purification from bacterial colonies, linearization with HindIII restriction enzyme. PCR of plasmids with 18S_V9 primers. Purification of the PCR product. Gel electrophoresis of primary PCR products. If single band found, proceed with the current DNA stock. If multiple bands are found, cut out correct length band from the gel and re-amplify that DNA.
+
+Cleanup of PCR product:
+-MgSO4-Ethanol + vortexing (precipitation)
+-Centrifuge max speed
+-Wash pellet in EthOH and dry in 37C oven
+-AGRF resuspension
+
+Ship samples to Sanger in 1.5ml Flip cap tubes.
+
+————————————————————————
+
+Remove chimeras
+Align sequences to SILVA alignment eukaryotic SILVA database.

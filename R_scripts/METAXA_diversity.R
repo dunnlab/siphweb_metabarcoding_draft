@@ -7,8 +7,8 @@ library(vegan)
 library(adegenet)
 library(magrittr)
 
-runid = "RUN1"
-barcodes=c("134", "152","166", "179", "261", "272")
+runid = "RUN2"
+barcodes=c("134", "152","166", "17nine", "261", "272")
 setwd("~")
 #Listing up IDtables and their molten, pruned counterparts
 IDLIST=list()
