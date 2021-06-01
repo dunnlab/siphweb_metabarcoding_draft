@@ -315,7 +315,8 @@ rotateNodes<-function(tree,nodes,polytom=c(1,2,3),...){
   return(tree)
 }
 
-tree2 <- rotateNodes(tree,nodes="all")
+tree2 <- tree
+#tree2 <- rotateNodes(tree,nodes="all")
 plotTree(tree2)
 is_tip <- tree2$edge[,2] <= length(tree2$tip.label)
 ordered_tips <- tree2$edge[is_tip, 2]
@@ -409,8 +410,8 @@ expand.grid(unique(selectivity_spp$Prey),missing_spp)->missing_entries
 missing_entries <- cbind(missing_entries, rep(NA, nrow(missing_entries)))
 names(missing_entries) <- names(selectivity_spp)
 selectivity_spp <- rbind(selectivity_spp, missing_entries)
-SEL_spp <- ggplot(selectivity_spp, aes(x = Prey, y = Species, fill = `L.I.`)) + geom_tile() + scale_fill_gradient2(low = "red", high = "blue", mid = "white", na.value = "grey") + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1), axis.title.y=element_blank())
 
+SEL_spp <- ggplot(selectivity_spp, aes(x = Prey, y = Species, fill = `L.I.`)) + geom_tile() + scale_fill_gradient2(low = "red", high = "blue", mid = "white", na.value = "grey") + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1), axis.title.y=element_blank())
 
 ## 
 
@@ -470,7 +471,7 @@ GC_pruned <- GC_lit[which(GC_lit$Predator %in% unique(meltedGC$Species)),]
 
 ggplot(GC_pruned, aes(x = Prey_broad, y = Predator, fill = Num_interactions)) + geom_tile(color="grey") + scale_fill_gradient(low = "black", high = "black") + theme_bw() + theme(panel.grid.major = element_blank()) + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1), axis.title.y=element_blank())
 
-MorphDAPC <- read.csv("Literature-data/DAPCdiet_posteriors.tsv", sep="\t", stringsAsFactors = F)
+MorphDAPC <- read.csv("siphweb_metabarcoding/Literature-data/DAPCdiet_posteriors.tsv", sep="\t", stringsAsFactors = F)
 #MorphDAPC <- MorphDAPC[which(MorphDAPC$Species %in% unique(meltedGC$Species)),]
 meltedMorph <- melt(MorphDAPC)
 names(meltedMorph)[2:3] <- c("Prey","Predicted")
