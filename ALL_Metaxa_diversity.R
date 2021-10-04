@@ -614,3 +614,18 @@ pdf("SM_ind_interpretation_barcode.pdf", width = 20, height = 30)
 ggplot(ref_samples, aes(x = paste(Species, Specimen), y = log(abundance), fill = Interpretation)) + geom_bar(position = "fill",stat = "identity") + theme_bw() + theme(legend.key.size = unit(1,"line"), legend.text = element_text(size=5),legend.position="bottom", axis.text.x = element_text(angle = 90, hjust = 1)) + scale_fill_manual(values=c(colorRampPalette(brewer.pal(8, "Set2"))(8))) + guides(shape = guide_legend(override.aes = list(size = 1))) + guides(shape = guide_legend(override.aes = list(size = 1))) + facet_wrap(.~barcode, nrow=6, ncol=1)
 dev.off()
 
+#Summary.table
+split(allsamples[,2:4],f=allsamples$Species) %>% lapply(function(x){unique(x$Specimen) %>% length()}) %>% unlist() -> Nsampled
+Nsampled <- data.frame(Species = names(Nsampled), N_sampled = Nsampled)
+dcast(meltedGC, formula=Species~Specimen, fun = sum, value.var="Presence") -> sps
+data.frame(Species=sps$Species,N=rowSums(sps[,-1]))->sps
+NS <- left_join(Nsampled,sps,by="Species")
+spMorphGuilds <- do.call(rbind,split(meltedMorph,f=meltedMorph$Species) %>% lapply(function(x){return(x[which(x$Predicted==max(x$Predicted)),])}))[,1:2]
+names(spMorphGuilds)[2] <- "MorphGuild"
+NS <- left_join(NS,spMorphGuilds, by="Species")
+PNASguilds <- c("Small crustacean", "Small crustacean", "Small crustacean", "Small crustacean", "Small crustacean", "Large crustacean", "Mixed", "Mixed", "Mixed", "Large crustacean", "Large crustacean", "Mixed", "Small crustacean", "Large crustacean", "Fish", "Fish", "Fish", "Large crustacean", "Gelatinous", "Fish", "Fish", "Fish", "Large crustacean", "Large crustacean")
+names(PNASguilds) <- c("Sulculeolaria quadrivalvis","Chelophyes appendiculata","Diphyes dispar","Sphaeronectes koellikeri","Hippopodius hippopus","Praya dubia","Agalma okenii","Athorybia rosacea","Agalma elegans","Nanomia sp. deep","Lychnagalma utricularia","Forskalia sp.","Cordagalma ordinatum","Resomia ornicephala","Erenna richardi","Erenna sirena","Stephanomia amphitrydis","Bargmannia amoena","Apolemia rubriversa","Rhizophysa eysenhardtii","Rhizophysa filiformis","Physalia physalis","Nanomia sp. Atlantic", "Nanomia sp. shallow")
+NS <- left_join(NS,data.frame(Species=names(PNASguilds), PNAS_guilds = PNASguilds), by="Species")
+
+NS$N[is.na(NS$N)] <- 0
+write.csv(NS,"NStable.tsv",col.names = T,row.names = F,sep='\t')
