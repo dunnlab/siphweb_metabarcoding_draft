@@ -13,8 +13,10 @@ library(patchwork)
 library(ggtree)
 library(ggplotify)
 library(scatterpie)
+library(googledrive)
 
 barcodes=c("134", "152","166", "179", "261", "272")
+drive_get("/")
 setwd("/Volumes/GoogleDrive/My Drive/Metabarcoding_things/siphweb_metabarcoding/IDtables_ALL")
 
 runids = c("RUN0","RUN1","RUN2","RUN3", "RUN4","RUN5")
@@ -217,7 +219,7 @@ ggplot(customtab, aes(x = sample, y = log(abundance), fill = OTU)) + geom_bar(po
 
 ### Analyze Metaxa & Trawl Data
 #Read metabarcoding data
-setwd("/Volumes/GoogleDrive/My Drive/Metabarcoding_things/")
+setwd("smb://localhost/alejandro.damianserrano@yale.edu - Google Drive/My Drive/Metabarcoding_things/")
 allsamples <- read.csv("/Volumes/GoogleDrive/My Drive/Metabarcoding_things/siphweb_metabarcoding/AllSamplesParsed.tsv", sep="\t", header = T, stringsAsFactors = F)
 allsamples <- allsamples[,-66]
 #Parse sequences/feature_names
@@ -613,6 +615,32 @@ dev.off()
 pdf("SM_ind_interpretation_barcode.pdf", width = 20, height = 30)
 ggplot(ref_samples, aes(x = paste(Species, Specimen), y = log(abundance), fill = Interpretation)) + geom_bar(position = "fill",stat = "identity") + theme_bw() + theme(legend.key.size = unit(1,"line"), legend.text = element_text(size=5),legend.position="bottom", axis.text.x = element_text(angle = 90, hjust = 1)) + scale_fill_manual(values=c(colorRampPalette(brewer.pal(8, "Set2"))(8))) + guides(shape = guide_legend(override.aes = list(size = 1))) + guides(shape = guide_legend(override.aes = list(size = 1))) + facet_wrap(.~barcode, nrow=6, ncol=1)
 dev.off()
+
+#############
+#Without siph signal
+prey_samples <- ref_samples[which(ref_samples$Interpretation == "Prey"),]
+
+#species by broad group
+pdf("SM_spp_broadgroup_prey.pdf", width = 20, height = 10)
+ggplot(prey_samples, aes(x = Species, y = log(abundance), fill = Broad.group)) + geom_bar(position = "fill",stat = "identity") + theme_bw() + theme(legend.key.size = unit(1,"line"), legend.text = element_text(size=5),legend.position="bottom", axis.text.x = element_text(angle = 90, hjust = 1)) + scale_fill_manual(values=c(colorRampPalette(brewer.pal(6, "Set1"))(14))) + guides(shape = guide_legend(override.aes = list(size = 1))) 
+dev.off()
+
+#species by broad group and barcode
+pdf("SM_spp_broadgroup_barcode_prey.pdf", width = 20, height = 6)
+ggplot(prey_samples, aes(x = Species, y = log(abundance), fill = Broad.group)) + geom_bar(position = "fill",stat = "identity") + theme_bw() + theme(legend.key.size = unit(1,"line"), legend.text = element_text(size=5),legend.position="bottom", axis.text.x = element_text(angle = 90, hjust = 1)) + scale_fill_manual(values=c(colorRampPalette(brewer.pal(6, "Set1"))(14))) + guides(shape = guide_legend(override.aes = list(size = 1))) +  facet_grid(.~barcode)
+dev.off()
+
+#specimens by broad group
+pdf("SM_ind_broadgroup_prey.pdf", width = 20, height = 10)
+ggplot(prey_samples, aes(x = paste(Species, Specimen), y = log(abundance), fill = Broad.group)) + geom_bar(position = "fill",stat = "identity") + theme_bw() + theme(legend.key.size = unit(1,"line"), legend.text = element_text(size=5),legend.position="bottom", axis.text.x = element_text(angle = 90, hjust = 1)) + scale_fill_manual(values=c(colorRampPalette(brewer.pal(6, "Set1"))(14))) + guides(shape = guide_legend(override.aes = list(size = 1))) 
+dev.off()
+
+#specimens by broad group and barcode
+pdf("SM_ind_broadgroup_barcode_prey.pdf", width = 20, height = 10)
+ggplot(prey_samples, aes(x = paste(Species, Specimen), y = log(abundance), fill = Broad.group)) + geom_bar(position = "fill",stat = "identity") + theme_bw() + theme(legend.key.size = unit(1,"line"), legend.text = element_text(size=5),legend.position="bottom", axis.text.x = element_text(angle = 90, hjust = 1)) + scale_fill_manual(values=c(colorRampPalette(brewer.pal(6, "Set1"))(14))) + guides(shape = guide_legend(override.aes = list(size = 1)))  + facet_wrap(.~barcode, nrow=6, ncol=1)
+dev.off()
+
+############
 
 #Summary.table
 split(allsamples[,2:4],f=allsamples$Species) %>% lapply(function(x){unique(x$Specimen) %>% length()}) %>% unlist() -> Nsampled
